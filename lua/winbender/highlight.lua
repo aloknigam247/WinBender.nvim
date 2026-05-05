@@ -88,7 +88,9 @@ local function adjust_256_color(color_num, factor)
 end
 
 local function adjust_color_cterm(color_num, factor)
-    if color_num >= 0 and color_num <= 15 then
+    if color_num == nil then
+        return color_num
+    elseif color_num >= 0 and color_num <= 15 then
         return adjust_ansi_color(color_num)
     elseif color_num >= 232 and color_num <= 255 then
         return adjust_greyscale_color(color_num, factor)
