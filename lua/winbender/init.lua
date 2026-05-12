@@ -28,6 +28,9 @@ local function enable()
     keymaps.save()
     keymaps.set_maps()
     highlight.enable()
+    if config.options.on_enable then
+        pcall(config.options.on_enable)
+    end
 end
 
 local function disable()
@@ -37,6 +40,9 @@ local function disable()
     local keymaps   = require("winbender.keymaps")
     local highlight = require("winbender.highlight")
 
+    if config.options.on_disable then
+        pcall(config.options.on_disable)
+    end
     highlight.disable()
     keymaps.restore_maps()
     display.clear_all_labels()
